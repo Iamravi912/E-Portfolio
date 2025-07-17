@@ -154,6 +154,16 @@ const BlogSection: React.FC = () => {
       color: "#9C27B0",
       link: "https://medium.com/@ravi9991ct/the-command-working-behind-the-ctrl-c-and-ctrl-z-interrupt-signals-412c9ba641c6"
     },
+    {
+      title: "Git Branching Workflow: Creating, Modifying, and Merging a Feature Branch Without Conflicts",
+      excerpt: "A practical guide to creating, modifying, and merging feature branches in Git, with tips to avoid conflicts and streamline your workflow.",
+      date: "2024-04-18",
+      author: "Ravi Gupta",
+      readTime: "8 min read",
+      category: "Git & Workflow",
+      color: "#F1502F",
+      link: "https://medium.com/@ravi9991ct/git-branching-workflow-creating-modifying-and-merging-a-feature-branch-without-conflicts-06941a6e3f2a"
+    },
   ];
 
   return (
