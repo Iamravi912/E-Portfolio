@@ -105,6 +105,56 @@ const BlogSection: React.FC = () => {
     },
     // NEW BLOGS ADDED
     {
+      title: "Contributing to Open Source: A Step-by-Step Guide to Forking, Cloning, and Creating a Pull Request…",
+      excerpt: "A comprehensive guide to making your first open source contribution, from forking a repo to submitting a pull request.",
+      date: "2024-04-22",
+      author: "Ravi Gupta",
+      readTime: "9 min read",
+      category: "Open Source",
+      color: "#43A047",
+      link: "https://medium.com/@ravi9991ct/contributing-to-open-source-a-step-by-step-guide-to-forking-cloning-and-creating-a-pull-request-2d72dc7aeebe"
+    },
+    {
+      title: "Creating a Git Repository and Pushing to GitHub: A Step-by-Step Guide",
+      excerpt: "Learn how to initialize a Git repository, add files, commit changes, and push your code to GitHub with this beginner-friendly tutorial.",
+      date: "2023-12-10",
+      author: "Ravi Gupta",
+      readTime: "6 min read",
+      category: "Git & GitHub",
+      color: "#24292F",
+      link: "https://medium.com/@ravi9991ct/creating-a-git-repository-and-pushing-to-github-a-step-by-step-guide-6de4504792c6"
+    },
+    {
+      title: "How to Fetch Your Last Email from Gmail Using JavaScript and the Gmail API",
+      excerpt: "Step-by-step instructions to fetch your latest email from Gmail using JavaScript and the Gmail API.",
+      date: "2024-04-20",
+      author: "Ravi Gupta",
+      readTime: "7 min read",
+      category: "JavaScript & APIs",
+      color: "#EA4335",
+      link: "https://medium.com/@ravi9991ct/how-to-fetch-your-last-email-from-gmail-using-javascript-and-the-gmail-api-2b77b548c56a"
+    },
+    {
+      title: "How to Record a Video in the Browser and Send It via Email Using EmailJS",
+      excerpt: "Learn how to record a video in your browser and send it via email using EmailJS, with code examples.",
+      date: "2024-04-19",
+      author: "Ravi Gupta",
+      readTime: "8 min read",
+      category: "Web Development",
+      color: "#1976D2",
+      link: "https://medium.com/@ravi9991ct/how-to-record-a-video-in-the-browser-and-send-it-via-email-using-emailjs-eeed87dcea61"
+    },
+    {
+      title: "Run VLC Media Player Inside Docker with GUI — Complete Step-by-Step Guide",
+      excerpt: "A complete guide to running VLC Media Player inside a Docker container with GUI support.",
+      date: "2024-04-17",
+      author: "Ravi Gupta",
+      readTime: "10 min read",
+      category: "Docker & GUI",
+      color: "#FF5722",
+      link: "https://medium.com/@ravi9991ct/run-vlc-media-player-inside-docker-with-gui-complete-step-by-step-guide-110738b57d44"
+    },
+    {
       title: "5 Popular GUI Programs in Linux and the Terminal Commands Behind Them",
       excerpt: "Explore the most popular GUI applications in Linux and the terminal commands that power them behind the scenes.",
       date: "2024-04-01",
@@ -166,6 +216,9 @@ const BlogSection: React.FC = () => {
     },
   ];
 
+  const [showAll, setShowAll] = React.useState(false);
+  const visiblePosts = showAll ? blogPosts : blogPosts.slice(0, 3);
+
   return (
     <section id="blog" className="py-20 px-4 relative">
       <div className="max-w-6xl mx-auto">
@@ -187,7 +240,7 @@ const BlogSection: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
+          {visiblePosts.map((post, index) => (
             <article
               key={index}
               className="group bg-gradient-to-br from-slate-800 to-slate-700 rounded-xl p-6 border border-slate-600 transform transition-all duration-300 hover:scale-105 hover:border-slate-400 hover:shadow-2xl cursor-pointer relative overflow-hidden"
@@ -257,18 +310,31 @@ const BlogSection: React.FC = () => {
 
         {/* View All Posts Button */}
         <div className="text-center mt-12">
-          <button 
-            className="group relative px-8 py-4 bg-purple-600 text-white font-semibold rounded-lg transform transition-all duration-300 hover:scale-105 hover:bg-purple-700 font-exo"
-            onClick={() => {
-              window.open('https://medium.com/@ravi9991ct', '_blank', 'noopener,noreferrer');
-            }}
-          >
-            <span className="flex items-center gap-2">
-              <BookOpen className="w-5 h-5" />
-              View All Posts on Medium
-            </span>
-            <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-cyan-400 via-purple-600 to-pink-500 blur-md -z-10"></div>
-          </button>
+          {!showAll ? (
+            <button 
+              className="group relative px-8 py-4 bg-purple-600 text-white font-semibold rounded-lg transform transition-all duration-300 hover:scale-105 hover:bg-purple-700 font-exo mx-auto"
+              style={{ display: 'block' }}
+              onClick={() => setShowAll(true)}
+            >
+              <span className="flex items-center gap-2 justify-center">
+                <BookOpen className="w-5 h-5" />
+                View All Blogs
+              </span>
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-cyan-400 via-purple-600 to-pink-500 blur-md -z-10"></div>
+            </button>
+          ) : (
+            <button 
+              className="group relative px-8 py-4 bg-cyan-600 text-white font-semibold rounded-lg transform transition-all duration-300 hover:scale-105 hover:bg-cyan-700 font-exo mx-auto"
+              style={{ display: 'block' }}
+              onClick={() => setShowAll(false)}
+            >
+              <span className="flex items-center gap-2 justify-center">
+                <BookOpen className="w-5 h-5" />
+                Show Less
+              </span>
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-r from-cyan-400 via-purple-600 to-pink-500 blur-md -z-10"></div>
+            </button>
+          )}
         </div>
       </div>
     </section>
